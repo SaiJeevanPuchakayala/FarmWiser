@@ -1,7 +1,7 @@
 # FarmWiser
 ## Smart Agriculture using Machine Learning and IoT
 
-![AI-Farm](/Images/AI-Farm.png)
+![AI-Farm](/Images/AI-Farm.jpg)
 
 #### Agriculture is the backbone of the Indian economy, still, it suffers from a heaping number of disasters such as climate change, unpredictable monsoon, or lack of it, droughts, floods, etc. Due to these, there is huge crop loss or failure. People involved in agriculture are the last to be taken care of, even when they are the one who feeds the whole country.
 
