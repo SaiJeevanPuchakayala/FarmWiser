@@ -26,19 +26,19 @@ def cropPredictor(inputData, model):
     if model == "Random Forest":
         model = pickle.load(open("CR_RF.pkl", 'rb'))
         pred = model.predict(inputData)
-        print("RF")
+        # print("RF")
         return pred[0]
 
     elif model == "Decision Tree":
         model = pickle.load(open("CR_DecisionTree.pkl", 'rb'))
         pred = model.predict(inputData)
-        print("DT")
+        # print("DT")
         return pred[0]
 
     elif model == "Naive Bayes":
         model = pickle.load(open("CR_NaiveBayes.pkl", 'rb'))
         pred = model.predict(inputData)
-        print("NB")
+        # print("NB")
         return pred[0]
 
 app = Flask(__name__)
@@ -70,7 +70,7 @@ def crop_prediction():
             l = np.asarray(l)
             l = np.reshape(l,(1,7))
             crop_reccomended = cropPredictor(l,model).capitalize()
-            print(crop_reccomended)
+            # print(crop_reccomended)
 
             return render_template('result.html', prediction=crop_reccomended, title=title)
 

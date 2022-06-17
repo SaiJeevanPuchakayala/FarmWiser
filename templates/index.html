@@ -11,7 +11,7 @@
    </head>
 <body>
   <div class="container">
-    <div class="title">FarmWiser: Crop Recommendation System</div>
+    <div class="title">FarmWiser👨: Crop🌾 Recommendation System!</div>
     <div class="content">
     <form method="POST" action="{{ url_for('crop_prediction') }}">
         <div class="user-details">
@@ -105,6 +105,7 @@
           <input type="radio" name="model" value="Decision Tree"  id="dot-1">
           <input type="radio" name="model" value="Random Forest" id="dot-2">
           <input type="radio" name="model" value="Naive Bayes" id="dot-3">
+          <input type="radio" name="model" value="XGBoost" id="dot-4">
           <span class="gender-title">Model</span>
           <div class="category">
             <label for="dot-1">
@@ -119,6 +120,10 @@
             <span class="dot three"></span>
             <span class="gender">Naive Bayes</span>
             </label>
+            <label for="dot-4">
+              <span class="dot four"></span>
+              <span class="gender">XGBoost</span>
+              </label>
           </div>
         </div>
         <div class="button">

@@ -10,13 +10,22 @@
 <body>
     <div class="container">
       {% if title == "Unable Process" %}
-        <h1 calss="title" style="text-align: center;">{{ prediction }}!</h1>
+        <h1 class="title" style="text-align: center;">{{ prediction }}!</h1>
 
 
       {% else %}
-        <h1 calss="title" style="text-align: center;">{{ prediction }} should be grown 🚜 on your farm 🌾, my friend 👨‍🌾!</h1>
+        <h1 class="title" style="text-align: center;">FarmWiser👨: Crop Recommended<hr> <br>
+          {{ prediction }} should be grown 🚜 on your farm 🌾, my friend 👨‍🌾!</h1>
 
       {% endif %}
+
+    <a href="{{ url_for('home') }}">
+        <form action="/">
+        <div class="button">
+          <input type="submit" value="Back to Home">
+        </div>
+        </form>
+    </a>
     </div>
 </body>
 </html>
