@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script type="text/JavaScript" src="{{ url_for('static', filename='scripts/StatesAndCities.js') }}"></script>
+   </head>
+<body>
+  <div class="container">
+    <div class="title">FarmWiser: Crop Recommendation System</div>
+    <div class="content">
+    <form method="POST" action="{{ url_for('crop_prediction') }}">
+        <div class="user-details">
+          <div class="input-box">
+            <span for="Nitrogen" class="details">Nitrogen</span>
+            <input         
+            type="number"
+            class="form-control"
+            id="Nitrogen"
+            name="nitrogen"
+            placeholder="Enter the value (example:50)"
+            style="font-weight: bold"
+             required
+             />
+          </div>
+          <div class="input-box">
+            <span class="details">Phosphorous</span>
+            <input        
+            type="number"
+            class="form-control"
+            id="Phosphorous"
+            name="phosphorous"
+            placeholder="Enter the value (example:50)"
+            style="font-weight: bold"
+            required>
+          </div>
+          <div class="input-box">
+            <span class="details">Pottasium</span>
+            <input         
+            type="number"
+            class="form-control"
+            id="Pottasium"
+            name="pottasium"
+            placeholder="Enter the value (example:50)"
+            style="font-weight: bold"
+            required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">pH level</span>
+            <input         
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="ph"
+            name="ph"
+            placeholder="Enter the value"
+            style="font-weight: bold"
+            required>
+          </div>
+          <div class="input-box">
+            <span class="details">Rainfall (in mm)</span>
+            <input         
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="Rainfall"
+            name="rainfall"
+            placeholder="Enter the value"
+            style="font-weight: bold"
+            required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">State</span>
+            <select
+            onchange="print_city('state', this.selectedIndex);"
+            id="sts"
+            name="stt"
+            class="form-control"
+            style="font-weight: bold; color: black;"
+            
+            required
+          ></select>
+          </div>
+          <div class="input-box">
+            <span class="details">City</span>
+            <select
+            id="state"
+            class="form-control"
+            name="city"
+            style="font-weight: bold; color: black;"
+            required
+          ></select>
+          <script language="javascript">
+            print_state("sts");
+          </script>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="model" value="Decision Tree"  id="dot-1">
+          <input type="radio" name="model" value="Random Forest" id="dot-2">
+          <input type="radio" name="model" value="Naive Bayes" id="dot-3">
+          <span class="gender-title">Model</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Decision Tree</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Random Forest</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Naive Bayes</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Recommend">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
