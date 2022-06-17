@@ -49,7 +49,7 @@ def home():
     return render_template('index.html', title=title)
 
 
-@app.route('/crop-predict', methods=['POST'])
+@app.route('/cropRecommended', methods=['POST'])
 def crop_prediction():
     title = 'FarmWiser - Crop Recommendation'
 
@@ -60,7 +60,6 @@ def crop_prediction():
         ph = float(request.form['ph'])
         rainfall = float(request.form['rainfall'])
 
-        # state = request.form.get("stt")
         city = request.form.get("city")
 
         model = request.form.get("model")
@@ -70,15 +69,15 @@ def crop_prediction():
             l = [N,P,K,temperature,humidity,ph,rainfall]
             l = np.asarray(l)
             l = np.reshape(l,(1,7))
-            crop_reccomended = cropPredictor(l,model)
+            crop_reccomended = cropPredictor(l,model).capitalize()
             print(crop_reccomended)
 
             return render_template('result.html', prediction=crop_reccomended, title=title)
 
         else:
 
-            return render_template('try_again.html', title=title)
+            return render_template('result.html', prediction="Sorry we couldn't process your request currently. Please try again", title="Unable Process")
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

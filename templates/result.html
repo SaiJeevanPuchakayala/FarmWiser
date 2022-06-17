@@ -3,13 +3,20 @@
   <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
    </head>
 <body>
     <div class="container">
-        <h1 calss="title">{{ Prediction }}</h1>
+      {% if title == "Unable Process" %}
+        <h1 calss="title" style="text-align: center;">{{ prediction }}!</h1>
+
+
+      {% else %}
+        <h1 calss="title" style="text-align: center;">{{ prediction }} should be grown 🚜 on your farm 🌾, my friend 👨‍🌾!</h1>
+
+      {% endif %}
     </div>
 </body>
 </html>

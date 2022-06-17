@@ -23,7 +23,7 @@ body{
 }
 .container .title{
   font-size: 25px;
-  font-weight: 500;
+  font-weight: 1000;
   position: relative;
   text-align: center;
 }
@@ -54,6 +54,19 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
+
+.user-details .input-box select{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
   border-color: #9b59b6;
