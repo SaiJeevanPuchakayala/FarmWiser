@@ -50,25 +50,25 @@ def weather_fetch(city_name):
 
 def cropPredictor(inputData, model):
     if model == "Random Forest":
-        model = pickle.load(open("CR_RF.pkl", 'rb'))
+        model = pickle.load(open("./ml_models/CR_RF.pkl", 'rb'))
         pred = model.predict(inputData)
         # print("RF")
         return pred[0]
 
     elif model == "Decision Tree":
-        model = pickle.load(open("CR_DecisionTree.pkl", 'rb'))
+        model = pickle.load(open("./ml_models/CR_DecisionTree.pkl", 'rb'))
         pred = model.predict(inputData)
         # print("DT")
         return pred[0]
 
     elif model == "Naive Bayes":
-        model = pickle.load(open("CR_NaiveBayes.pkl", 'rb'))
+        model = pickle.load(open("./ml_models/CR_NaiveBayes.pkl", 'rb'))
         pred = model.predict(inputData)
         # print("NB")
         return pred[0]
 
     elif model == "XGBoost":
-        model = pickle.load(open("CR_XB.pkl",'rb'))
+        model = pickle.load(open("./ml_models/CR_XB.pkl",'rb'))
         xbpred = model.predict(inputData)
         pred = categoricalValues[xbpred[0]]
         #print("XB")

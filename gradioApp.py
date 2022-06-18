@@ -6,24 +6,56 @@ import config
 
 modelsList = ["CR_DecisionTree.pkl","CR_NaiveBayes.pkl","CR_RF.pkl","CR_XB.pkl"]
 
+categoricalValues = {
+    20.0: 'rice',
+    11.0: 'maize',
+    3.0: 'chickpea',
+    9.0: 'kidneybeans',
+    18.0: 'pigeonpeas',
+    13.0: 'mothbeans',
+    14.0: 'mungbean',
+    2.0: 'blackgram',
+    10.0: 'lentil',
+    19.0: 'pomegranate',
+    1.0: 'banana',
+    12.0: 'mango',
+    7.0: 'grapes',
+    21.0: 'watermelon',
+    15.0: 'muskmelon',
+    0.0: 'apple',
+    16.0: 'orange',
+    17.0: 'papaya',
+    4.0: 'coconut',
+    6.0: 'cotton',
+    8.0: 'jute',
+    5.0: 'coffee'
+                    }
+
 def cropPredictor(inputData, model):
     if model == "Random Forest":
-        model = pickle.load(open("CR_RF.pkl", 'rb'))
+        model = pickle.load(open("./ml_models/CR_RF.pkl", 'rb'))
         pred = model.predict(inputData)
-        print("RF")
+        # print("RF")
         return pred[0]
 
     elif model == "Decision Tree":
-        model = pickle.load(open("CR_DecisionTree.pkl", 'rb'))
+        model = pickle.load(open("./ml_models/CR_DecisionTree.pkl", 'rb'))
         pred = model.predict(inputData)
-        print("DT")
+        # print("DT")
         return pred[0]
 
     elif model == "Naive Bayes":
-        model = pickle.load(open("CR_NaiveBayes.pkl", 'rb'))
+        model = pickle.load(open("./ml_models/CR_NaiveBayes.pkl", 'rb'))
         pred = model.predict(inputData)
-        print("NB")
+        # print("NB")
         return pred[0]
+
+    elif model == "XGBoost":
+        model = pickle.load(open("./ml_models/CR_XB.pkl",'rb'))
+        xbpred = model.predict(inputData)
+        pred = categoricalValues[xbpred[0]]
+        #print("XB")
+        return pred
 
 
 def weather_fetch(city_name):
@@ -57,7 +89,7 @@ def inputDataProcessor(N,P,K,temperature,humidity,ph,rainfall,model):
 label = gr.outputs.Label()
 
 app = gr.Interface(fn=inputDataProcessor, 
-inputs=["number","number","number","number","number","number","number",gr.inputs.Radio(["Random Forest", "Decision Tree", "Naive Bayes"])],  
+inputs=["number","number","number","number","number","number","number",gr.inputs.Radio(["Random Forest", "Decision Tree", "Naive Bayes", "XGBoost"])],  
 outputs=label ,
                     title="Crop Recommendation System", 
 
