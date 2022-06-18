@@ -4,6 +4,32 @@ import config
 import pickle
 import numpy as np
 
+
+categoricalValues = {
+    20.0: 'rice',
+    11.0: 'maize',
+    3.0: 'chickpea',
+    9.0: 'kidneybeans',
+    18.0: 'pigeonpeas',
+    13.0: 'mothbeans',
+    14.0: 'mungbean',
+    2.0: 'blackgram',
+    10.0: 'lentil',
+    19.0: 'pomegranate',
+    1.0: 'banana',
+    12.0: 'mango',
+    7.0: 'grapes',
+    21.0: 'watermelon',
+    15.0: 'muskmelon',
+    0.0: 'apple',
+    16.0: 'orange',
+    17.0: 'papaya',
+    4.0: 'coconut',
+    6.0: 'cotton',
+    8.0: 'jute',
+    5.0: 'coffee'
+                    }
+
 def weather_fetch(city_name):
     api_key = config.weather_api_key
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -40,6 +66,16 @@ def cropPredictor(inputData, model):
         pred = model.predict(inputData)
         # print("NB")
         return pred[0]
+
+    elif model == "XGBoost":
+        model = pickle.load(open("CR_XB.pkl",'rb'))
+        xbpred = model.predict(inputData)
+        pred = categoricalValues[xbpred[0]]
+        #print("XB")
+        return pred
+
+
+
 
 app = Flask(__name__)
 
