@@ -1,8 +1,6 @@
 import pickle
 import numpy as np
 import gradio as gr
-import requests
-import config
 
 modelsList = ["CR_DecisionTree.pkl","CR_NaiveBayes.pkl","CR_RF.pkl","CR_XB.pkl"]
 
@@ -56,25 +54,6 @@ def cropPredictor(inputData, model):
         pred = categoricalValues[xbpred[0]]
         #print("XB")
         return pred
-
-
-def weather_fetch(city_name):
-    api_key = config.weather_api_key
-    base_url = "http://api.openweathermap.org/data/3.0/weather?"
-
-    complete_url = base_url + "appid=" + api_key + "&q=" + city_name
-    response = requests.get(complete_url)
-    x = response.json()
-
-    if x["cod"] != "404":
-        y = x["main"]
-
-        temperature = round((y["temp"] - 273.15), 2)
-        humidity = y["humidity"]
-        return temperature, humidity
-    else:
-        return None
-
 
 def inputDataProcessor(N,P,K,temperature,humidity,ph,rainfall,model):
     l = [N,P,K,temperature,humidity,ph,rainfall]
