@@ -30,7 +30,7 @@ jobs:
       - name: Black check
         run: |
           black --safe --check .
-        working-directory: ./app
+        working-directory: /app
 
   build:
     runs-on: ubuntu-latest
