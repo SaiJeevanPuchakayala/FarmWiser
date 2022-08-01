@@ -30,7 +30,7 @@ jobs:
       - name: Black check
         run: |
           black --safe --check .
-        working-directory: /flaskApp.py
+        working-directory: /FarmWiserApp
 
   build:
     runs-on: ubuntu-latest
