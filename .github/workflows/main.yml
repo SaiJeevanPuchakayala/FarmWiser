@@ -1,5 +1,5 @@
 # Your workflow name.
-name: Deploying to heroku.
+name: CI/CD (Deploying to Heroku!)
 
 # Run workflow on every push to main branch.
 on:
@@ -8,6 +8,30 @@ on:
 
 # Your workflows jobs.
 jobs:
+
+  black:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9.6
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9.13
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-black
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install black==20.8b1
+        pip install click==8.0.4
+    - name: Black check
+      run: |
+        black --safe --check .
+      working-directory: ./app
+
   build:
     runs-on: ubuntu-latest
     steps:
