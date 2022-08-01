@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="{{ url_for('static', filename = 'images/icon.png') }}" type="image/icon type">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-   </head>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="{{ url_for('static', filename = 'images/icon.png') }}" type="image/icon type">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+</head>
+
 <body>
-    <div class="container">
-      {% if title == "Unable Process" %}
-        <h1 class="title" style="text-align: center;">{{ prediction }}!</h1>
+  <div class="container">
+    {% if title == "Unable Process" %}
+    <h1 class="title" style="text-align: center;">{{ prediction }}!</h1>
 
 
-      {% else %}
-        <h1 class="title" style="text-align: center;">FarmWiser👨: Crop Recommended<hr> <br>
-          {{ prediction }} should be grown 🚜 on your farm 🌾, my friend 👨‍🌾!</h1>
+    {% else %}
+    <h1 class="title" style="text-align: center;">FarmWiser👨: Crop Recommended
+      <hr> <br>
+      {{ prediction }} should be grown 🚜 on your farm 🌾, my friend 👨‍🌾!
+    </h1>
 
-      {% endif %}
+    {% endif %}
 
     <a href="{{ url_for('home') }}">
-        <form action="/">
+      <form action="/">
         <div class="button">
           <input type="submit" value="Back to Home">
         </div>
-        </form>
+      </form>
     </a>
-    </div>
+  </div>
 </body>
+
 </html>
