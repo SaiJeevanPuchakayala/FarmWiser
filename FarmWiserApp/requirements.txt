@@ -19,3 +19,4 @@ pandas==1.4.2
 seaborn==0.11.2
 cfscrape
 bs4
+lxml==4.6.3
