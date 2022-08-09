@@ -49,13 +49,13 @@ def crop_prediction():
             # print(crop_reccomended)
 
             return render_template(
-                "result.html", prediction=crop_reccomended, title=title
+                "cropRecommendResult.html", prediction=crop_reccomended, title=title
             )
 
         else:
 
             return render_template(
-                "result.html",
+                "cropRecommendResult.html",
                 prediction="Sorry we couldn't process your request currently. Please try again",
                 title="Unable Process",
             )

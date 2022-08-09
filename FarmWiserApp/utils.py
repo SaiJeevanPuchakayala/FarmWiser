@@ -3,6 +3,7 @@ import config
 import pickle
 from bs4 import BeautifulSoup
 import cfscrape
+import os
 
 
 scraper = cfscrape.create_scraper()
@@ -17,7 +18,7 @@ class News_Scraper:
 
     def parse(self):
         soup = BeautifulSoup(self.markup, "lxml")
-        links = soup.findAll("a", limit=300)
+        links = soup.findAll("a", limit=500)
         self.news_links = []
         self.news_linksTexts = []
         for link in links:
@@ -101,27 +102,33 @@ def weather_fetch(city_name):
         return None
 
 
+CR_RF_model_path = "FarmWiserApp/ml_models/CR_RF.pkl"
+CR_DecisionTree_model_path = "FarmWiserApp/ml_models/CR_DecisionTree.pkl"
+CR_NaiveBayes_model_path = "FarmWiserApp/ml_models/CR_NaiveBayes.pkl"
+CR_XB_model_path = "FarmWiserApp/ml_models/CR_XB.pkl"
+
+
 def cropPredictor(inputData, model):
     if model == "Random Forest":
-        model = pickle.load(open("./ml_models/CR_RF.pkl", "rb"))
+        model = pickle.load(open(CR_RF_model_path, "rb"))
         pred = model.predict(inputData)
         # print("RF")
         return pred[0]
 
     elif model == "Decision Tree":
-        model = pickle.load(open("./ml_models/CR_DecisionTree.pkl", "rb"))
+        model = pickle.load(open(CR_DecisionTree_model_path, "rb"))
         pred = model.predict(inputData)
         # print("DT")
         return pred[0]
 
     elif model == "Naive Bayes":
-        model = pickle.load(open("./ml_models/CR_NaiveBayes.pkl", "rb"))
+        model = pickle.load(open(CR_NaiveBayes_model_path, "rb"))
         pred = model.predict(inputData)
         # print("NB")
         return pred[0]
 
     elif model == "XGBoost":
-        model = pickle.load(open("./ml_models/CR_XB.pkl", "rb"))
+        model = pickle.load(open(CR_XB_model_path, "rb"))
         xbpred = model.predict(inputData)
         pred = categoricalValues[xbpred[0]]
         # print("XB")
