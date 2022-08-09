@@ -102,10 +102,10 @@ def weather_fetch(city_name):
         return None
 
 
-CR_RF_model_path = "FarmWiserApp/ml_models/CR_RF.pkl"
-CR_DecisionTree_model_path = "FarmWiserApp/ml_models/CR_DecisionTree.pkl"
-CR_NaiveBayes_model_path = "FarmWiserApp/ml_models/CR_NaiveBayes.pkl"
-CR_XB_model_path = "FarmWiserApp/ml_models/CR_XB.pkl"
+CR_RF_model_path = "CR_RF.pkl"
+CR_DecisionTree_model_path = "CR_DecisionTree.pkl"
+CR_NaiveBayes_model_path = "CR_NaiveBayes.pkl"
+CR_XB_model_path = "CR_XB.pkl"
 
 
 def cropPredictor(inputData, model):
