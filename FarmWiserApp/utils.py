@@ -53,6 +53,7 @@ def newsExtracter():
         news_text_list.append(x.text)
         news_links_list.append("https://economictimes.indiatimes.com" + x["href"])
     news = list(zip(news_text_list, news_links_list))
+    print(list(set(news)))
     return list(set(news))
 
 

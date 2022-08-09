@@ -8,20 +8,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    title = "FarmWiser"
+    title = "FarmWiser | Home"
     news = newsExtracter()
     return render_template("index.html", title=title, news=news)
 
 
 @app.route("/cropRecommender")
 def cropRecommender():
-    title = "FarmWiser"
+    title = "FarmWiser | Crop"
     return render_template("cropRecommender.html", title=title)
 
 
 @app.route("/weatherFinder")
 def weatherFinder():
-    title = "FarmWiser"
+    title = "FarmWiser | Weather"
     return render_template("weatherFinder.html", title=title)
 
 
