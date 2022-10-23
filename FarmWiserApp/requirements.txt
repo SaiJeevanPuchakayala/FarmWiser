@@ -22,3 +22,4 @@ bs4
 lxml==4.9.1
 selenium
 flask_caching
+webdriver-manager

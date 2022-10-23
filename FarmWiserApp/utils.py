@@ -8,6 +8,7 @@ from selenium import webdriver
 import time
 import os
 from selenium.webdriver.support.ui import Select
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 scraper = cfscrape.create_scraper()
@@ -145,9 +146,10 @@ def ScrapeCommodityPriceData(commodityName, yearData, monthData):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(
-        executable_path=r"chromedriver.exe", options=chrome_options
-    )
+    # driver = webdriver.Chrome(
+    #     executable_path=r"chromedriver.exe", options=chrome_options
+    # )
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
     # driver = webdriver.Chrome(
     #     executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options
     # )
