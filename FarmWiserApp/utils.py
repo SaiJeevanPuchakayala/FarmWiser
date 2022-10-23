@@ -141,22 +141,16 @@ def cropPredictor(inputData, model):
 
 def ScrapeCommodityPriceData(commodityName, yearData, monthData):
     # Selenium Driver Configurations
-    # chrome_options = webdriver.ChromeOptions()
-    # chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("--disable-dev-shm-usage")
-    # chrome_options.add_argument("--no-sandbox")
-    # driver = webdriver.Chrome(
-    #     executable_path=r"chromedriver.exe", options=chrome_options
-    # )
-
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(
-        executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options
+        executable_path=r"chromedriver.exe", options=chrome_options
     )
+    # driver = webdriver.Chrome(
+    #     executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options
+    # )
 
     # Extracting HTML response
     driver.get("https://agmarknet.gov.in/PriceTrends/SA_Pri_Month.aspx")

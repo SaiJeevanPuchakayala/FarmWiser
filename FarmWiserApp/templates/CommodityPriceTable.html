@@ -2,25 +2,12 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-        }
+    <meta charset="UTF-8">
 
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2
-        }
-    </style>
+    <link rel="icon" href="{{ url_for('static', filename = 'images/icon.png') }}" type="image/icon type">
+    <link href="{{ url_for('static', filename='css/priceTable.css') }}" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
 </head>
 
 <body>
