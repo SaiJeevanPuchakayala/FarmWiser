@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>{{ table_title }}</h2>
+    <p>*Report Generation: As per the data reported by APMCs (Prices in Rs/Quintal)</p>
+
+    <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>{{ pricesData[0]['State'] }}</th>
+                <th>{{ pricesData[0]['currentMonthValue'] }}</th>
+                <th>{{ pricesData[0]['previousMonthValue'] }}</th>
+                <th>{{ pricesData[0]['currentMonthLastYearValue'] }}</th>
+                <th>{{ pricesData[0]['changePercentMonth'] }}</th>
+                <th>{{ pricesData[0]['changePercentYear'] }}</th>
+            </tr>
+            {% for data_row in pricesData[1:] %}
+            <tr>
+                <td>
+                    {{ data_row['State'] }}
+                </td>
+                <td>
+                    {{ data_row['currentMonthValue'] }}
+                </td>
+                <td>
+                    {{ data_row['previousMonthValue'] }}
+                </td>
+
+                <td>
+                    {{ data_row['currentMonthLastYearValue'] }}
+                </td>
+                <td>
+                    {{ data_row['changePercentMonth'] }}
+                </td>
+                <td>
+                    {{ data_row['changePercentYear'] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+
+</html>

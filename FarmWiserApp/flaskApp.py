@@ -1,9 +1,13 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request, jsonify
 import numpy as np
 from utils import *
+from flask_caching import Cache
 
 
 app = Flask(__name__)
+
+app.config["CACHE_TYPE"] = "simple"
+cache = Cache(app)
 
 
 @app.route("/")
@@ -57,8 +61,26 @@ def crop_prediction():
             return render_template(
                 "cropRecommendResult.html",
                 prediction="Sorry we couldn't process your request currently. Please try again",
-                title="Unable Process",
+                title="Unable to Process",
             )
+
+
+@app.route("/CropPrice")
+@cache.cached(timeout=300, query_string=True)
+def CropPriceScreener():
+    title = "FarmWiser | Crop Price Screener"
+    commodityName = request.args["commodityName"]
+    yearValue = request.args["yearValue"]
+    monthValue = request.args["monthValue"]
+    priceDataTable, table_title = ScrapeCommodityPriceData(
+        commodityName, yearValue, monthValue
+    )
+    return render_template(
+        "CommodityPriceTable.html",
+        title=title,
+        pricesData=priceDataTable,
+        table_title=table_title,
+    )
 
 
 if __name__ == "__main__":
