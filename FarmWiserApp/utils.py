@@ -128,7 +128,7 @@ def cropPredictor(inputData, model):
         return pred[0]
 
     elif model == "XGBoost":
-        model = pickle.load(open("./FarmWiserApp/CR_XB.pkl", "rb"))
+        model = pickle.load(open(CR_XB_model_path, "rb"))
         xbpred = model.predict(inputData)
         pred = categoricalValues[xbpred[0]]
         # print("XB")
