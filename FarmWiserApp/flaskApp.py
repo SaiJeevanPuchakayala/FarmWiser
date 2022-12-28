@@ -1,12 +1,13 @@
-from flask import Flask, jsonify, render_template, request, jsonify
+from flask import Flask, render_template, request
 import numpy as np
+from flask_caching import Cache
 from utils import *
 
 
 app = Flask(__name__)
 
-# app.config["CACHE_TYPE"] = "simple"
-# cache = Cache(app)
+app.config["CACHE_TYPE"] = "simple"
+cache = Cache(app)
 
 
 @app.route("/")
@@ -64,22 +65,22 @@ def crop_prediction():
             )
 
 
-# @app.route("/CropPrice")
-# @cache.cached(timeout=300, query_string=True)
-# def CropPriceScreener():
-#     title = "FarmWiser | Crop Price Screener"
-#     commodityName = request.args["commodityName"]
-#     yearValue = request.args["yearValue"]
-#     monthValue = request.args["monthValue"]
-#     priceDataTable, table_title = ScrapeCommodityPriceData(
-#         commodityName, yearValue, monthValue
-#     )
-#     return render_template(
-#         "CommodityPriceTable.html",
-#         title=title,
-#         pricesData=priceDataTable,
-#         table_title=table_title,
-#     )
+@app.route("/CropPrice")
+@cache.cached(timeout=300, query_string=True)
+def CropPriceScreener():
+    title = "FarmWiser | Crop Price Screener"
+    commodityName = request.args["commodityName"]
+    yearValue = request.args["yearValue"]
+    monthValue = request.args["monthValue"]
+    priceDataTable, table_title = ScrapeCommodityPriceData(
+        commodityName, yearValue, monthValue
+    )
+    return render_template(
+        "CommodityPriceTable.html",
+        title=title,
+        pricesData=priceDataTable,
+        table_title=table_title,
+    )
 
 
 if __name__ == "__main__":
