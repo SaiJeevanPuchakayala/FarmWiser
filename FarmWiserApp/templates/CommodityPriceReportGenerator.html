@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="{{ url_for('static', filename = 'images/icon.png') }}" type="image/icon type">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">FarmWiser👨: Commodity🌾 Price Report Generator!</div>
+        <div class="content">
+            <form method="POST" action="{{ url_for('CropPriceScreener') }}">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Commodity Name</span>
+                        <input type="text" class="form-control" id="commodityName" name="commodityName"
+                            placeholder="Enter the name of required Commodity data" style="font-weight: bold"
+                            required />
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Year</span>
+                        <input type="number" class="form-control" id="yearValue" name="yearValue"
+                            placeholder="Enter the year of required data" style="font-weight: bold" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Month</span>
+                        <input type="text" class="form-control" id="monthValue" name="monthValue"
+                            placeholder="Enter the month of required data" style="font-weight: bold" required />
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Generate Report">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

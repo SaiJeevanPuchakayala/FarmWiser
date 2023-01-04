@@ -60,27 +60,33 @@ def crop_prediction():
 
             return render_template(
                 "cropRecommendResult.html",
-                prediction="Sorry we couldn't process your request currently. Please try again",
+                prediction="Sorry we couldn't process your request currently. Please try again later!",
                 title="Unable to Process",
             )
 
 
-@app.route("/CropPrice")
+@app.route("/CropPriceReport", methods=["GET", "POST"])
 @cache.cached(timeout=300, query_string=True)
 def CropPriceScreener():
-    title = "FarmWiser | Crop Price Screener"
-    commodityName = request.args["commodityName"]
-    yearValue = request.args["yearValue"]
-    monthValue = request.args["monthValue"]
-    priceDataTable, table_title = ScrapeCommodityPriceData(
-        commodityName, yearValue, monthValue
-    )
-    return render_template(
-        "CommodityPriceTable.html",
-        title=title,
-        pricesData=priceDataTable,
-        table_title=table_title,
-    )
+
+    if request.method == "GET":
+        title = "FarmWiser | Crop Price Report Generator"
+        return render_template("CommodityPriceReportGenerator.html", title=title)
+
+    if request.method == "POST":
+        title = "FarmWiser | Crop Price Viewer"
+        commodityName = request.form["commodityName"]
+        yearValue = request.form["yearValue"]
+        monthValue = request.form["monthValue"]
+        priceDataTable, table_title = ScrapeCommodityPriceData(
+            commodityName, yearValue, monthValue
+        )
+        return render_template(
+            "CommodityPriceViewer.html",
+            title=title,
+            pricesData=priceDataTable,
+            table_title=table_title,
+        )
 
 
 if __name__ == "__main__":
