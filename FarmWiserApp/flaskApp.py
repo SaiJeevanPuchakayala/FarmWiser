@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import numpy as np
 from flask_caching import Cache
 from utils import *
+from newsFeedFetcher import TOPICS, news_by_topic
 
 
 app = Flask(__name__)
@@ -13,7 +14,8 @@ cache = Cache(app)
 @app.route("/")
 def home():
     title = "FarmWiser | Home"
-    news = newsExtracter()
+    # news = newsExtracter()
+    news = news_by_topic(TOPICS.AGRICULTURE)
     return render_template("index.html", title=title, news=news)
 
 
@@ -83,9 +85,9 @@ def CommodityPriceViewer():
 
     if request.method == "POST":
         title = "FarmWiser | Crop Price Viewer"
-        commodityName = request.form["commodityName"]
+        commodityName = request.form["commodityName"].capitalize()
         yearValue = request.form["yearValue"]
-        monthValue = request.form["monthValue"]
+        monthValue = request.form["monthValue"].capitalize()
         priceDataTable, table_title = CommodityPriceExtractor(
             commodityName, yearValue, monthValue
         )

@@ -117,7 +117,7 @@
 
                 {% for new in news%}
                 <div class="item">
-                    <h4>{{new[0]}}<br><span><a href={{new[1]}} target="_blank"><span
+                    <h4>{{new['title']}}<br><span><a href={{new['link']}} target="_blank"><span
                                     class="glyphicon glyphicon-new-window"></span> Read More</a></span></h4>
                 </div>
                 {% endfor%}
