@@ -65,20 +65,29 @@ def crop_prediction():
             )
 
 
-@app.route("/CropPriceReport", methods=["GET", "POST"])
-@cache.cached(timeout=300, query_string=True)
-def CropPriceScreener():
+@app.route("/CommodityPriceReportGenerator")
+def CommodityPriceReportGenerator():
+    title = "FarmWiser | Crop Price Report Generator"
+    return render_template("CommodityPriceReportGenerator.html", title=title)
 
-    if request.method == "GET":
-        title = "FarmWiser | Crop Price Report Generator"
-        return render_template("CommodityPriceReportGenerator.html", title=title)
+
+@cache.memoize(timeout=300)
+def CommodityPriceExtractor(commodityName, yearValue, monthValue):
+    priceDataTable, table_title = ScrapeCommodityPriceData(
+        commodityName, yearValue, monthValue
+    )
+    return priceDataTable, table_title
+
+
+@app.route("/CommodityPriceViewer", methods=["POST"])
+def CommodityPriceViewer():
 
     if request.method == "POST":
         title = "FarmWiser | Crop Price Viewer"
         commodityName = request.form["commodityName"]
         yearValue = request.form["yearValue"]
         monthValue = request.form["monthValue"]
-        priceDataTable, table_title = ScrapeCommodityPriceData(
+        priceDataTable, table_title = CommodityPriceExtractor(
             commodityName, yearValue, monthValue
         )
         return render_template(
