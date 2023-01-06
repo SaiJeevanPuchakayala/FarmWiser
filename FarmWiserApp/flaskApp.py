@@ -50,7 +50,6 @@ def crop_prediction():
             l = np.asarray(l)
             l = np.reshape(l, (1, 7))
             crop_reccomended = cropPredictor(l, model).capitalize()
-            # print(crop_reccomended)
 
             return render_template(
                 "cropRecommendResult.html", prediction=crop_reccomended, title=title
