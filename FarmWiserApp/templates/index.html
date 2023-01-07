@@ -112,11 +112,11 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <h4>"Innovations are very cruel by nature. They destroy the old ones to create space for
-                        themselves."<br><span>― Sukant Ratnakar, Quantraz</span></h4>
+                    <h4>{{news[0]['title']}}<br><span><a href={{news[0]['link']}} target="_blank"><span
+                        class="glyphicon glyphicon-new-window"></span> Read More</a></span></h4>
                 </div>
 
-                {% for new in news%}
+                {% for new in news[1:]%}
                 <div class="item">
                     <h4>{{new['title']}}<br><span><a href={{new['link']}} target="_blank"><span
                                     class="glyphicon glyphicon-new-window"></span> Read More</a></span></h4>
