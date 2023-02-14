@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Lilita+One|Ubuntu&display=swap" rel="stylesheet" />
+  <link rel="icon" href="{{ url_for('static', filename = 'images/icon.png') }}" type="image/icon type">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <title>{{ title }}</title>
+</head>
+
+<body style="background-color: #3a55d0">
+  <div class="container">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <canvas id="myChart" style="background-color: #3a55d0"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //https://docs.google.com/spreadsheets/d/1CDTKjgAtIijCk4SX6EitvMU3u-95rsB97XVhMs706Fo/edit#gid=0
+    function buildcharts() {
+      const sheetId = "1CDTKjgAtIijCk4SX6EitvMU3u-95rsB97XVhMs706Fo";
+      const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
+      const sheetName = "Sheet1";
+      const query = encodeURIComponent("Select *");
+      const url = `${base}&sheet=${sheetName}&tq=${query}`;
+      fetch(url)
+        .then((response) => {
+          return response.text();
+        })
+        .then((rep) => {
+          const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
+          const table = jsonData["table"];
+          const rows = table["rows"];
+          //console.log(table);
+          console.log(rows);
+          firstrow = rows[0];
+          let xValues = [];
+          let yValues = [];
+          for (let row = 0; row < rows.length; row++) {
+            let date = rows[row]["c"][0]["f"];
+            let time = rows[row]["c"][1]["f"];
+            date = date.slice(0, -5);
+            time = time.slice(0, -3);
+            xval = "( " + date + " , " + time + " )";
+            xValues.push(xval);
+            yValues.push(rows[row]["c"][4]["v"]); // 2 - Temparature, 3 - Moisture, 4 - Humidity
+          }
+          console.log(xValues);
+          console.log(yValues);
+          var max = Math.max.apply(null, yValues);
+          len = xValues.length - 10;
+          if (xValues.length > 10) {
+            xValues = xValues.slice(len, xValues.length);
+            yValues = yValues.slice(len, yValues.length);
+          }
+
+          //console.log(xValues);
+          //console.log(yValues);
+
+          context = document.getElementById("myChart").getContext("2d");
+
+          var gradient = context.createLinearGradient(0, 0, 0, 600);
+          gradient.addColorStop(0, "rgba(32, 226, 47, 0.5)");
+          gradient.addColorStop(0.5, "rgba(32, 226, 47, 0.3)");
+          gradient.addColorStop(1, "rgba(32, 226, 47, 0)");
+
+          new Chart("myChart", {
+            type: "line",
+            data: {
+              labels: xValues,
+              datasets: [
+                {
+                  fill: true,
+                  label: "Sensed Data",
+                  backgroundColor: gradient,
+                  borderColor: "rgba(32, 255, 47)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderColor: "rgba(32, 255, 47)",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(32, 255, 47)",
+                  data: yValues,
+                },
+              ],
+            },
+            options: {
+              legend: {
+                labels: {
+                  fontColor: "#E1EFF9",
+                  fontSize: 14,
+                  fontFamily: "'Trebuchet MS'",
+                },
+              },
+              animation: {
+                duration: 0,
+              },
+              responsive: true,
+              title: {
+                display: true,
+                text: "Soil Health Screener",
+                fontColor: "#E1EFF9",
+                fontSize: 36,
+                fontFamily: "'Trebuchet MS'",
+              },
+              tooltips: {
+                mode: "index",
+                intersect: false,
+              },
+              hover: {
+                mode: "nearest",
+                intersect: true,
+              },
+              scales: {
+                xAxes: [
+                  {
+                    display: true,
+                    gridLines: {
+                      display: false,
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Time Instances (Date,Time)",
+                      fontFamily: "'Trebuchet MS'",
+                      fontColor: "#e3e275",
+                      fontSize: 16,
+                    },
+                    ticks: {
+                      fontFamily: "'Trebuchet MS'",
+                      fontColor: "#e3e275",
+                      fontSize: 12,
+                    },
+                  },
+                ],
+                yAxes: [
+                  {
+                    display: true,
+                    gridLines: {
+                      display: true,
+                      color: "#363C4E",
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Sensed Value",
+                      fontFamily: "'Trebuchet MS'",
+                      fontColor: "#e3e275",
+                      fontSize: 16,
+                    },
+                    ticks: {
+                      fontFamily: "'Trebuchet MS'",
+                      fontColor: "#e3e275",
+                      fontSize: 12,
+                    },
+                  },
+                ],
+              },
+            },
+          });
+        });
+    }
+    //buildcharts();
+    setInterval(buildcharts, 2000);
+  </script>
+</body>
+
+</html>

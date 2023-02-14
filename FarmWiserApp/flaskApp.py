@@ -31,6 +31,12 @@ def weatherFinder():
     return render_template("weatherFinder.html", title=title)
 
 
+@app.route("/SoilHealthMonitoring")
+def SoilHealthMonitoring():
+    title = "FarmWiser | Soil Health Screener"
+    return render_template("SoilHealthMonitoring.html", title=title)
+
+
 @app.route("/cropRecommended", methods=["POST"])
 def crop_prediction():
     title = "FarmWiser - Crop Recommendation"
@@ -72,7 +78,7 @@ def CommodityPriceReportGenerator():
     return render_template("CommodityPriceReportGenerator.html", title=title)
 
 
-@cache.memoize(timeout=300)
+@cache.memoize(timeout=600)  # Cache Timeout in Seconds
 def CommodityPriceExtractor(commodityName, yearValue, monthValue):
     priceDataTable, table_title = ScrapeCommodityPriceData(
         commodityName, yearValue, monthValue
