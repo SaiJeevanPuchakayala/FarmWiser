@@ -64,6 +64,12 @@ Start the server
 <br>
 <br>
 
+## Tech Stack
+
+![Tech Stack](/Images/30.png)
+
+<br>
+<br>
 
 ## Web App Interface: FarmWiser
 
