@@ -48,15 +48,18 @@
             <div class="col-sm-8">
                 <h2>About FarmWiser</h2><br>
                 <h4>FarmWiser is a farmer's friend in advising the farmer about crop-related aspects and providing the
-                    current trends of the crop's atmosphere in an advance. This application is equipped with a Weather
-                    Forecaster, a Crop Recommendation System, a State Wise Commodity Price Viewer, and a Realtime Soil Health Monitoring Screener. Apart from these, This application has an agriculture
+                    current trends of the crop's atmosphere in advance. This application is equipped with a Weather
+                    Forecaster, a Crop Recommendation System, a State Wise Commodity Price Viewer, and a Realtime Soil
+                    Health Monitoring Screener. Apart from these, This application has an agriculture
                     <a href=#news>News Viewer</a> that extracts information from various media sources into a simple,
                     focused format.
                 </h4>
                 <br><a href="{{ url_for('cropRecommender') }}"><button class="btn btn-default btn-lg">Crop
                         Recommendation</button></a>
                 <br>
-
+                <br><a href="https://chromaticscan.streamlit.app/"><button
+                        class="btn btn-default btn-lg">ChromaticScan</button></a>
+                <br>
                 <br><a href="{{ url_for('weatherFinder') }}"><button class="btn btn-default btn-lg">Realtime
                         Weather</button></a>
                 <br>
@@ -64,6 +67,9 @@
                 <br><a href="{{ url_for('CommodityPriceReportGenerator') }}"><button
                         class="btn btn-default btn-lg">Statewise Commodity
                         Price Viewer</button></a>
+                <br>
+                <br><a href="https://soilitix.streamlit.app/"><button
+                        class="btn btn-default btn-lg">Soilitix</button></a>
                 <br>
             </div>
             <div class="col-sm-4">
@@ -113,7 +119,7 @@
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <h4>{{news[0]['title']}}<br><span><a href={{news[0]['link']}} target="_blank"><span
-                        class="glyphicon glyphicon-new-window"></span> Read More</a></span></h4>
+                                    class="glyphicon glyphicon-new-window"></span> Read More</a></span></h4>
                 </div>
 
                 {% for new in news[1:]%}
