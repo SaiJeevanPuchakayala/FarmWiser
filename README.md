@@ -3,16 +3,21 @@
 
 ![AI-Farm](/Images/AI-Farm.png)
 
-### Farmwiser is a cutting-edge project that combines the power of Machine Learning and Internet of Things (IoT) to provide advanced analytics and insights to farmers. With Farmwiser, farmers can monitor and analyze soil health, crop growth, weather patterns, and pest infestation, among other things.
+Farmwiser is a cutting-edge project that combines the power of Machine Learning and Internet of Things (IoT) to provide advanced analytics and insights to farmers. With Farmwiser, farmers can monitor and analyze soil health, crop growth, weather patterns, and pest infestation, among other things.
 
-### Using TinyML, the system processes real-time data from sensors and cameras placed in the farm and generates personalized recommendations to optimize the farming process, such as when to irrigate, fertilize, or harvest crops.
+Using TinyML, the system processes real-time data from sensors and cameras placed in the farm and generates personalized recommendations to optimize the farming process, such as when to irrigate, fertilize, or harvest crops.
 
-### Farmwiser's user-friendly interface allows farmers to access data and recommendations from anywhere, at any time, using their mobile devices or computers. By reducing manual labor, improving productivity and minimizing losses, Farmwiser empowers farmers to make data-driven decisions that maximize their profits and ensure sustainable agriculture. Join the smart farming revolution with Farmwiser!
+Farmwiser's user-friendly interface allows farmers to access data and recommendations from anywhere, at any time, using their mobile devices or computers. By reducing manual labor, improving productivity and minimizing losses, Farmwiser empowers farmers to make data-driven decisions that maximize their profits and ensure sustainable agriculture. Join the smart farming revolution with Farmwiser!
 
 <br>
 <br>
 
-## Relevance:
+## ⭐ Integrated Applications:
+
+<br>
+<br>
+
+## ⭐ Relevance:
 - Helps farmer’s to predict the diseases of the crop using Data Science techniques.
 - Usage of weather prediction for automated irrigation system.
 - Helps farmer’s to know the suitable crop to grow in that season.
@@ -21,7 +26,7 @@
 <br>
 <br>
 
-## Scope:
+## ⭐ Scope:
 - Integration with more sensors and devices: Currently, Farmwiser is designed to work with a limited set of sensors and devices. In the future, more sensors and devices can be integrated into the system to provide even more data points for analysis. This can include sensors for soil moisture, pH, and nutrient levels, as well as drones and satellites for aerial imaging.
 
 - Enhanced machine learning models: As more data is collected from the farm, the machine learning models used by Farmwiser can be further optimized and refined to provide more accurate predictions and recommendations. This can include developing new models to predict crop yields, identify crop diseases and pests, and optimize irrigation and fertilization schedules.
@@ -31,7 +36,7 @@
 <br>
 <br>
 
-## Flow of the project:
+## ⭐ Flow of the project:
 - Data Collection: Sensors and IoT devices are used to collect data from the farm, including soil moisture, temperature, humidity, and other environmental factors. This data is stored in a database for further analysis.
 - Data Pre-processing: The collected data is cleaned and pre-processed to remove any noise or irrelevant information. Data normalization and feature scaling techniques are applied to ensure that the data is consistent across all sensors.
 - Finding the Key Performance Indicators(KPI’s) from factors influencing agriculture and check
@@ -48,7 +53,7 @@ Potassium) values, pH values etc.)
 <br>
 <br>
 
-##  Run Locally
+## ⭐ Run Locally
 Clone the project
 
 ```bash
@@ -74,14 +79,14 @@ Start the server
 <br>
 <br>
 
-## Tech Stack
+## ⭐ Tech Stack
 
 ![Tech Stack](/Images/30.png)
 
 <br>
 <br>
 
-## Web App Interface: FarmWiser
+## ⭐ Web App Interface: FarmWiser
 
 ![Responsive UI 1](/Images/31.png)
 
@@ -94,7 +99,7 @@ Start the server
 <br>
 <br>
 
-## Hardware SetUp for Soil Health Monitoring
+## ⭐ Hardware SetUp for Soil Health Monitoring
 
 ![Soil Health Monitoring Flow](/Images/35.png)
 
