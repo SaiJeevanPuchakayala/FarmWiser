@@ -13,6 +13,17 @@ Farmwiser's user-friendly interface allows farmers to access data and recommenda
 <br>
 
 ## ⭐ Integrated Applications:
+## 1. [ChromaticScan](https://chromaticscan.streamlit.app/)
+<hr>
+
+**ChromaticScan is a state-of-the-art convolutional neural network (CNN) algorithm that is specifically designed for detecting plant diseases. It utilizes transfer learning by fine-tuning the ResNet 34 model on a large dataset of leaf images to achieve an impressive 99.2% accuracy in detecting various plant diseases. The algorithm is trained to identify specific patterns and features in the leaf images that are indicative of different types of diseases, such as leaf spots, blights, and wilts.**
+
+<br>
+
+## 2. [Soilitix](https://soilitix.streamlit.app/)
+<hr>
+
+**Soilitix is a web application designed for monitoring soil health. It allows farmers and gardeners to track important soil metrics such as temperature, moisture, and humidity. The application provides an easy-to-use interface that enables users to visualize and analyze their soil data, helping them make informed decisions about their crops and plants.**
 
 <br>
 <br>
