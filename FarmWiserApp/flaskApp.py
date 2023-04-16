@@ -60,7 +60,7 @@ def crop_prediction():
             crop_reccomended = cropPredictor(l, model).capitalize()
 
             return render_template(
-                "cropRecommendResult.html", prediction=crop_reccomended, title=title
+                "cropRecommendResult.html", prediction=f"{crop_reccomended} should be grown 🚜 on your farm 🌾, my friend 👨‍🌾!", title=title
             )
 
         else:
