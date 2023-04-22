@@ -1,7 +1,11 @@
 # FarmWiser
 ## Revolutionize your farming with Farmwiser, the ultimate TinyML based Smart Agriculture solution!
 
+<br>
+
 ![AI-Farm](/Images/AI-Farm.png)
+
+<br>
 
 Farmwiser is a cutting-edge project that combines the power of AI/ML and Internet of Things (IoT) to provide advanced analytics and insights to farmers. With Farmwiser, farmers can monitor and analyze soil health, crop growth, weather patterns, and pest infestation, among other things.
 
@@ -13,7 +17,15 @@ Farmwiser's user-friendly interface allows farmers to access data and recommenda
 <br>
 
 ## ⭐ Integrated Applications:
+
+<br>
+
+![Integrated Applications](/Images/IntegratedApplications.png)
+
+<br>
+
 ## 1. [ChromaticScan](https://chromaticscan.streamlit.app/)
+
 <hr>
 <br>
 
@@ -21,16 +33,20 @@ Farmwiser's user-friendly interface allows farmers to access data and recommenda
 
 **ChromaticScan is a state-of-the-art convolutional neural network (CNN) algorithm that is specifically designed for detecting plant diseases. It utilizes transfer learning by fine-tuning the ResNet 34 model on a large dataset of leaf images to achieve an impressive 99.2% accuracy in detecting various plant diseases. The algorithm is trained to identify specific patterns and features in the leaf images that are indicative of different types of diseases, such as leaf spots, blights, and wilts.**
 
+### Link to the Repository: [ChromaticScan](https://github.com/SaiJeevanPuchakayala/ChromaticScan)
+
 <br>
 
 ## 2. [Soilitix](https://soilitix.streamlit.app/)
 <hr>
 <br>
 
-![ChromaticScan](/Images/soilitixapp.jpg)
+![Soilitix](/Images/soilitixapp.jpg)
 
 
 **Soilitix is a web application designed for monitoring soil health. It allows farmers and gardeners to track important soil metrics such as temperature, moisture, and humidity. The application provides an easy-to-use interface that enables users to visualize and analyze their soil data, helping them make informed decisions about their crops and plants.**
+
+### Link to the Repository: [Soilitix](https://github.com/SaiJeevanPuchakayala/Soilitix)
 
 <br>
 <br>
